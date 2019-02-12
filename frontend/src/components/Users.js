@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-import Gravatar from 'react-gravatar';
+import UserAvatar from './UserAvatar';
 
 const USERS_QUERY = gql`
   query {
@@ -25,13 +25,10 @@ class Users extends Component {
           return (
             <div className="flex flex-wrap mb-4">
               {data.users.map((user) => {
-                return <div key={user.id} className="m-4 w-1/4 rounded overflow-hidden shadow-lg">
-                  <Gravatar email={user.email} size={150} className="w-full" />
-                  <div className="px-6 py-4">
-                    <div className="font-bold text-xl mb-2">{user.name}</div>
-                    <p className="text-grey-darker text-base">{user.email}</p>
-                    <p className="text-grey-darker text-base">{user.booksCount} books</p>
-                  </div>
+                return <div key={user.id}
+                            className="m-4 w-1/4 rounded overflow-hidden shadow-lg"
+                            onClick={this.props.selectUser.bind(this, user)}>
+                  <UserAvatar user={user} />
                 </div>
               })}
             </div>
