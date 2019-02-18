@@ -12,8 +12,8 @@ const Books = ({ books }) => (
             )}
           </p>
         </div>
-        <div className="w-1/4 p-4">
-          <img src={book.coverUrl} className="w-full" alt={book.title} />
+        <div className="w-1/4 p-4 text-right">
+          <img src={book.coverUrl} style={{height: '150px'}} alt={book.title} />
         </div>
       </div>
     )}
